@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tutorial extends Model
+class Comment extends Model
 {
   protected $guarded = [];
 
@@ -13,8 +13,8 @@ class Tutorial extends Model
     return $this->belongsTo('App\Models\User');
   }
 
-  public function Comments()
+  public function tutorial()
   {
-    return $this->hasMany('App\Models\Comment');
+    return $this->belongsTo('App\Models\Tutorial');
   }
 }
