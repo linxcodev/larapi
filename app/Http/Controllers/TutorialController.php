@@ -14,7 +14,7 @@ class TutorialController extends Controller
 
   public function show($id)
   {
-    $tutorial = Tutorial::find($id);
+    $tutorial = Tutorial::with('comments')->where('id', $id)->get();
 
     if (!$tutorial) {
       $tutorial = response()->json([
@@ -88,7 +88,7 @@ class TutorialController extends Controller
     }
 
     $tutorial->delete();
-    
+
     return response()->json([
       'success' => true,
       'message' => 'success menghapus'
